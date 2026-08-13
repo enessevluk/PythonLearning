@@ -1,0 +1,44 @@
+<Window x:Class="RavenMapPanel.AddMonumentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Yeni Monument Ekle" Width="620" Height="690" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner" Background="{StaticResource WindowBrush}" Foreground="{StaticResource TextBrush}">
+    <Grid Margin="24">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock Text="Yeni Monument Ekle" FontSize="25" FontWeight="SemiBold"/>
+            <TextBlock Text="Rust prefabını özel bir isim ve harita ikonu ile kataloğa ekleyin." Foreground="{StaticResource MutedBrush}" Margin="0,7,0,0"/>
+        </StackPanel>
+        <Border Grid.Row="1" Style="{StaticResource Card}" Margin="0,22,0,18">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Text="HARİTADA GÖRÜNECEK İSİM" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource MutedBrush}"/>
+                    <TextBox x:Name="DisplayNameBox" Margin="0,7,0,18" ToolTip="Örnek: Yeni Askeri Bölge"/>
+                    <TextBlock Text="RUST PREFAB YOLU" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource MutedBrush}"/>
+                    <TextBox x:Name="PrefabBox" Margin="0,7,0,5" ToolTip="assets/bundled/prefabs/.../ornek.prefab"/>
+                    <TextBlock Text="Rust dosyasında kullanılan tam prefab yolunu yazın. Tam yol, eşleşme ve zorunlu yerleştirme için daha güvenlidir." Foreground="{StaticResource MutedBrush}" FontSize="11" TextWrapping="Wrap" Margin="0,0,0,18"/>
+                    <TextBlock Text="KATEGORİ" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource MutedBrush}"/>
+                    <ComboBox x:Name="CategoryBox" IsEditable="True" Margin="0,7,0,18"/>
+                    <TextBlock Text="HARİTA İKONU" FontSize="11" FontWeight="SemiBold" Foreground="{StaticResource MutedBrush}"/>
+                    <Grid Margin="0,7,0,8"><Grid.ColumnDefinitions><ColumnDefinition Width="100"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                        <Border Width="88" Height="88" Background="#1B2631" BorderBrush="#344454" BorderThickness="1" CornerRadius="10">
+                            <Image x:Name="IconPreview" Margin="8" Stretch="Uniform"/>
+                        </Border>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <Button Style="{StaticResource ButtonBase}" Content="PNG Seç" HorizontalAlignment="Left" Click="ChooseIcon_Click"/>
+                            <TextBlock x:Name="IconInfoText" Text="Henüz PNG seçilmedi" Foreground="{StaticResource MutedBrush}" Margin="0,9,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                    <Border Background="#122A26" BorderBrush="#27584D" BorderThickness="1" CornerRadius="7" Padding="12">
+                        <TextBlock Text="Önerilen: 128 × 128 px, kare PNG ve şeffaf arka plan. Kabul edilen ölçüler: 64 × 64 ile 512 × 512 px." Foreground="#9DDECE" TextWrapping="Wrap"/>
+                    </Border>
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+        <Grid Grid.Row="2"><Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+            <TextBlock Text="Monument daha sonra Config klasöründen yeniden yüklenir." Foreground="{StaticResource MutedBrush}" FontSize="11" VerticalAlignment="Center"/>
+            <Button Grid.Column="1" Style="{StaticResource ButtonBase}" Content="Vazgeç" Margin="8,0" Click="Cancel_Click"/>
+            <Button Grid.Column="2" Style="{StaticResource PrimaryButton}" Content="Monumenti Ekle" Click="Add_Click"/>
+        </Grid>
+    </Grid>
+</Window>
